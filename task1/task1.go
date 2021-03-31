@@ -16,7 +16,6 @@ func main() {
 		fmt.Println("Usage: task1 <number_to_checK_automorphic")
 		return
 	}
-	var inpNum int
 	inpNum, err := strconv.Atoi(os.Args[1])
 	if err != nil {
 		fmt.Printf("%q looks like is not number or too big\n", os.Args[1])
