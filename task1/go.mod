@@ -1,3 +1,3 @@
-module go.trainig.exadel.com/task1
+module go.trainig.org/task1
 
 go 1.16
