@@ -16,24 +16,24 @@ func main() {
 		fmt.Println("Usage: task1 <number_to_checK_automorphic")
 		return
 	}
-	inpNum, err := strconv.Atoi(os.Args[1])
+	inpNum, err := strconv.ParseInt(os.Args[1], 10, 64)
 	if err != nil {
-		fmt.Printf("%q looks like is not number or too big\n", os.Args[1])
+		fmt.Printf("%q looks like is not integer number or too big\n", os.Args[1])
 		fmt.Println(err.Error())
 		return
 	}
+	var x int64 = inpNum
 	if inpNum < 0 {
-		fmt.Println("Use positive number please")
-		return
+		x = -x
 	}
-	if IsAutomorphic(inpNum) {
+	if IsAutomorphic(x) {
 		fmt.Printf("%d is automorphic number\n", inpNum)
 	} else {
 		fmt.Printf("%d is not automorphic number\n", inpNum)
 	}
 }
 
-func IsAutomorphic(num int) bool {
+func IsAutomorphic(num int64) bool {
 	sqn := num * num
 	origStr := fmt.Sprintf("%d", num)
 	sqStr := fmt.Sprintf("%d", sqn)
