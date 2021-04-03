@@ -4,7 +4,7 @@ import "testing"
 
 func TestIsAutomorphic(t *testing.T) {
 	cases := []struct {
-		in   int
+		in   int64
 		want bool
 	}{
 		{1, true},
