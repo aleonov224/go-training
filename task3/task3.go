@@ -79,7 +79,6 @@ func PrintWordsOrder(ffound_map map[string]int, count_map map[string]int) {
 	sort.Slice(ss, func(i, j int) bool {
 		return ss[i].Value > ss[j].Value
 	})
-
 	//prepare equal word's count sub array indexes
 	var eq_ndx []ndx_pair
 	var begin int = 0
@@ -98,9 +97,11 @@ func PrintWordsOrder(ffound_map map[string]int, count_map map[string]int) {
 
 	//Sort array parts for equal word frequency
 	for i := 0; i < len(eq_ndx); i++ {
-		sort.Slice(ss[eq_ndx[i].ValueA:eq_ndx[i].ValueB+1], func(i, j int) bool {
-			return ffound_map[ss[i].Key] < ffound_map[ss[j].Key]
+		sub_ss := ss[eq_ndx[i].ValueA : eq_ndx[i].ValueB+1]
+		sort.Slice(sub_ss, func(i, j int) bool {
+			return ffound_map[sub_ss[i].Key] < ffound_map[sub_ss[j].Key]
 		})
+		copy(ss[eq_ndx[i].ValueA:], sub_ss)
 	}
 
 	for i := 0; i < len(ss); i++ {
